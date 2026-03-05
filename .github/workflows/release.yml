@@ -2,11 +2,11 @@ name: Release
 
 on:
   push:
-    tags:
-      - '*'
+    tags: ["*.*.*"]
+  workflow_dispatch:
 
 jobs:
-  build-and-release:
+  release:
     runs-on: windows-latest
     permissions:
       contents: write
@@ -20,13 +20,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
-
-      - name: Restore dependencies
-        run: dotnet restore ReenableCopilot/ReenableCopilot.csproj
+          use-global-json: true
 
       - name: Build
-        run: dotnet build ReenableCopilot/ReenableCopilot.csproj --configuration Release --no-restore
+        run: dotnet build ReenableCopilot/ReenableCopilot.csproj -c Release
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
