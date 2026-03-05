@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for MinVer to compute version from tags
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ReenableCopilot/ReenableCopilot.csproj
+
+      - name: Build
+        run: dotnet build ReenableCopilot/ReenableCopilot.csproj --configuration Release --no-restore
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ReenableCopilot/bin/Release/net472/ReenableCopilot.vsix
+          generate_release_notes: true
