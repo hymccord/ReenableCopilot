@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ReenableCopilot.c5708372-9fcb-48e1-a7b0-a6ee3ad0a1d7" Version="1.0" Language="en-US" Publisher="Hank McCord" />
-    <DisplayName>ReenableCopilot</DisplayName>
-    <Description>Enable Copilot features in Visual Studio.</Description>
+    <Identity Id="GenAI.c5708372-9fcb-48e1-a7b0-a6ee3ad0a1d7" Version="1.0" Language="en-US" Publisher="Hank McCord" />
+    <DisplayName>GenAI</DisplayName>
+    <Description>Enable GenAI features in Visual Studio.</Description>
   </Metadata>
     <Installation ExtensionType="VSSDK+VisualStudio.Extensibility">
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,)">
